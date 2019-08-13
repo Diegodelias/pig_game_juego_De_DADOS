@@ -12,7 +12,7 @@ GAME RULES:
 var puntaje,  puntajeRonda, jugadorActivo
 
 puntaje= [0,0];
-pundaRonda = 0;
+puntajeRonda = 0;
 jugadorActivo = 0;
 
 dado = Math.floor(Math.random() * 6 ) +1;
@@ -37,24 +37,41 @@ document.getElementById('puntaje-actual-0').textContent = '0';
 document.getElementById('puntaje-actual-1').textContent = '0';
 
 
-//funcion de colback funcion que es pasada a otro funcion como argumento
+//funcion de callback funcion que es pasada a otro funcion como argumento
 //anonima funcion que no tiene nombre
 document.querySelector('.btn-tirar').addEventListener('click',function(){
 
     //generar numero aleatorio
-    dado = Math.floor(Math.random() * 6 ) +1;
+    var dado = Math.floor(Math.random() * 6 ) +1;
 
     //mostrar resultado
     var dadoDOM =  document.querySelector('.dado');
     dadoDOM.style.display = 'block';
     dadoDOM.src = 'dado-' + dado + '.png';
+    
+
 
 
 
     //actualizar el puntahe de la tirarda si numero no fue un 1
 
+    if (dado !== 1){
 
+        puntajeRonda += dado;
+        document.querySelector('#puntaje-actual-' + jugadorActivo).textContent  = puntajeRonda ;       
 
+    } else {
+        jugadorActivo === 0 ? jugadorActivo = 1 : jugadorActivo = 0; //operador ternario  si  jugador activo es 0 juagador activo debe ser 1 sino debe ser 0
+        puntajeRonda = 0;
+
+        document.getElementById('#puntaje-actual-0').textContent = '0';
+        document.getElementById('puntaje-actual-1').textContent = '0';
+
+        document.querySelector('.jugador-0-panel').classList.remove('activa');
+        document.querySelector('.jugador-1-panel').classList.add('activa');
+        
+        
+    }
 
 });
 

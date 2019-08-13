@@ -37,8 +37,8 @@ body {
     overflow: hidden;
 }
 
-.player-0-panel,
-.player-1-panel {
+.jugador-0-panel,
+.jugador-1-panel {
     width: 50%;
     float: left;
     height: 600px;
@@ -51,7 +51,7 @@ body {
 *** PLAYERS
 **********************************************/
 
-.player-name {
+.nombre-jugador {
     font-size: 40px;
     text-align: center;
     text-transform: uppercase;
@@ -70,10 +70,10 @@ body {
     margin-bottom: 130px;
 }
 
-.active { background-color: #f7f7f7; }
-.active .player-name { font-weight: 300; }
+.activa { background-color: #f7f7f7; }
+.activa .nombre-jugador { font-weight: 300; }
 
-.active .player-name::after {
+.activa .nombre-jugador::after {
     content: "\2022";
     font-size: 47px;
     position: absolute;
