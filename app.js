@@ -64,11 +64,16 @@ document.querySelector('.btn-tirar').addEventListener('click',function(){
         jugadorActivo === 0 ? jugadorActivo = 1 : jugadorActivo = 0; //operador ternario  si  jugador activo es 0 juagador activo debe ser 1 sino debe ser 0
         puntajeRonda = 0;
 
-        document.getElementById('#puntaje-actual-0').textContent = '0';
+        document.getElementById('puntaje-actual-0').textContent = '0';
         document.getElementById('puntaje-actual-1').textContent = '0';
 
-        document.querySelector('.jugador-0-panel').classList.remove('activa');
-        document.querySelector('.jugador-1-panel').classList.add('activa');
+        document.querySelector('.jugador-0-panel').classList.toggle('activa');
+        document.querySelector('.jugador-1-panel').classList.toggle('activa');
+
+        document.querySelector('.dado').style.display = 'none';
+
+        //document.querySelector('.jugador-0-panel').classList.remove('activa');
+        //document.querySelector('.jugador-1-panel').classList.add('activa');
         
         
     }
