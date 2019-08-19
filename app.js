@@ -61,7 +61,47 @@ document.querySelector('.btn-tirar').addEventListener('click',function(){
         document.querySelector('#puntaje-actual-' + jugadorActivo).textContent  = puntajeRonda ;       
 
     } else {
-        jugadorActivo === 0 ? jugadorActivo = 1 : jugadorActivo = 0; //operador ternario  si  jugador activo es 0 juagador activo debe ser 1 sino debe ser 0
+        CambioDeJugador();
+        
+        
+    }
+
+});
+
+document.querySelector('.btn-esperar').addEventListener('click', function(){
+
+    //agragar puntaje actual al pontaje total
+    puntaje[jugadorActivo] += puntajeRonda;
+    //actualizar ui
+
+    document.querySelector('#puntaje-' + jugadorActivo).textContent = puntaje[jugadorActivo]
+
+    CambioDeJugador();
+
+ 
+
+    //chequear si el jugador gano el juego
+    if (puntaje[jugadorActivo] >= 10) {
+
+        document.querySelector('#nombre-' + jugadorActivo).textContent = 'Ganador!';
+        document.querySelector('.dado').style.display= 'none';
+        document.querySelector('.jugador-' + jugadorActivo + '-panel').classList.add('ganador');
+        document.querySelector('.jugador-' + jugadorActivo + '-panel').classList.remove('activa');
+
+    } else {
+        CambioDeJugador();
+
+
+    }
+
+
+
+});
+
+
+function CambioDeJugador(){
+
+    jugadorActivo === 0 ? jugadorActivo = 1 : jugadorActivo = 0; //operador ternario  si  jugador activo es 0 juagador activo debe ser 1 sino debe ser 0
         puntajeRonda = 0;
 
         document.getElementById('puntaje-actual-0').textContent = '0';
@@ -72,13 +112,7 @@ document.querySelector('.btn-tirar').addEventListener('click',function(){
 
         document.querySelector('.dado').style.display = 'none';
 
-        //document.querySelector('.jugador-0-panel').classList.remove('activa');
-        //document.querySelector('.jugador-1-panel').classList.add('activa');
-        
-        
-    }
 
-});
-
+}
 
 
