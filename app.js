@@ -76,7 +76,7 @@ document.querySelector('.btn-esperar').addEventListener('click', function(){
 
     document.querySelector('#puntaje-' + jugadorActivo).textContent = puntaje[jugadorActivo]
 
-    CambioDeJugador();
+    //CambioDeJugador();
 
  
 
