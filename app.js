@@ -10,31 +10,23 @@ GAME RULES:
 */
 
 var puntaje,  puntajeRonda, jugadorActivo
+iniciar();
 
-puntaje= [0,0];
-puntajeRonda = 0;
-jugadorActivo = 0;
 
 dado = Math.floor(Math.random() * 6 ) +1;
 /*math random : da un valor aleatorio entre 0 y 1 multiplicarlo por 6 da numero entre 0 y 5 
 (defimales) para que llegue 6 se le suma 1
 floor le saca los decimales*/
-console.log(dado)
+
 
 //document.querySelector('#puntaje-actual-' + jugadorActivo).textContent =  dado;
-document.querySelector('#puntaje-actual-' + jugadorActivo).innerHTML = '<em>' + dado + '<em>';
+//document.querySelector('#puntaje-actual-' + jugadorActivo).innerHTML = '<em>' + dado + '<em>';
 
 
 
 var x = document.querySelector('#puntaje-0').textContent; //lerr
 console.log(x);
-document.querySelector('.dado').style.display = 'none';
 
-
-document.getElementById('puntaje-0').textContent = '0';
-document.getElementById('puntaje-1').textContent = '0';
-document.getElementById('puntaje-actual-0').textContent = '0';
-document.getElementById('puntaje-actual-1').textContent = '0';
 
 
 //funcion de callback funcion que es pasada a otro funcion como argumento
@@ -74,7 +66,7 @@ document.querySelector('.btn-esperar').addEventListener('click', function(){
     puntaje[jugadorActivo] += puntajeRonda;
     //actualizar ui
 
-    document.querySelector('#puntaje-' + jugadorActivo).textContent = puntaje[jugadorActivo]
+    document.querySelector('#puntaje-' + jugadorActivo).textContent = puntaje[jugadorActivo];
 
     //CambioDeJugador();
 
@@ -94,6 +86,7 @@ document.querySelector('.btn-esperar').addEventListener('click', function(){
 
     }
 
+    document.querySelector('.btn-nuevo').addEventListener('click',iniciar);
 
 
 });
@@ -116,3 +109,28 @@ function CambioDeJugador(){
 }
 
 
+
+
+function iniciar() {
+
+    puntaje = [0,0];
+    jugadorActivo=0;
+    puntajeRonda = 0;
+    document.querySelector('.dado').style.display = 'none';
+    document.getElementById('puntaje-0').textContent = '0';
+    document.getElementById('puntaje-1').textContent = '0';
+    document.getElementById('puntaje-actual-0').textContent = '0';
+    document.getElementById('puntaje-actual-1').textContent = '0';
+    document.getElementById('nombre-0').textContent = 'Jugador1';
+    document.getElementById('nombre-1').textContent = 'Jugador2';
+    document.querySelector('.jugador-0-panel').classList.remove('ganador');
+    document.querySelector('.jugador-1-panel').classList.remove('ganador');
+    document.querySelector('.jugador-0-panel').classList.remove('activa');
+    document.querySelector('.jugador-1-panel').classList.remove('activa');
+    document.querySelector('.jugador-0-panel').classList.add('activa');
+
+
+
+
+
+}
