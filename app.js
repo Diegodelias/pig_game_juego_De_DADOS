@@ -9,7 +9,8 @@ GAME RULES:
 
 */
 
-var puntaje,  puntajeRonda, jugadorActivo
+var puntaje,  puntajeRonda, jugadorActivo, jugando;
+
 iniciar();
 
 
@@ -32,20 +33,15 @@ console.log(x);
 //funcion de callback funcion que es pasada a otro funcion como argumento
 //anonima funcion que no tiene nombre
 document.querySelector('.btn-tirar').addEventListener('click',function(){
-
-    //generar numero aleatorio
+    if(jugando){
+          //generar numero aleatorio
     var dado = Math.floor(Math.random() * 6 ) +1;
 
     //mostrar resultado
     var dadoDOM =  document.querySelector('.dado');
     dadoDOM.style.display = 'block';
     dadoDOM.src = 'dado-' + dado + '.png';
-    
-
-
-
-
-    //actualizar el puntahe de la tirarda si numero no fue un 1
+     //actualizar el puntahe de la tirarda si numero no fue un 1
 
     if (dado !== 1){
 
@@ -58,9 +54,15 @@ document.querySelector('.btn-tirar').addEventListener('click',function(){
         
     }
 
+    }
+
+  
+
 });
 
 document.querySelector('.btn-esperar').addEventListener('click', function(){
+    if(jugando){
+
 
     //agragar puntaje actual al pontaje total
     puntaje[jugadorActivo] += puntajeRonda;
@@ -79,7 +81,7 @@ document.querySelector('.btn-esperar').addEventListener('click', function(){
         document.querySelector('.dado').style.display= 'none';
         document.querySelector('.jugador-' + jugadorActivo + '-panel').classList.add('ganador');
         document.querySelector('.jugador-' + jugadorActivo + '-panel').classList.remove('activa');
-
+        jugando = false;
     } else {
         CambioDeJugador();
 
@@ -87,6 +89,12 @@ document.querySelector('.btn-esperar').addEventListener('click', function(){
     }
 
     document.querySelector('.btn-nuevo').addEventListener('click',iniciar);
+
+
+
+
+
+    }
 
 
 });
@@ -112,7 +120,7 @@ function CambioDeJugador(){
 
 
 function iniciar() {
-
+    jugando = true;
     puntaje = [0,0];
     jugadorActivo=0;
     puntajeRonda = 0;
